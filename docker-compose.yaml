@@ -48,11 +48,13 @@ services:
       - 8080:8080
       - 5500:5500
     environment:
-      ORACLE_PWD: value
-      ORACLE_PDB: mypdb
-      ORACLE_SID: XE
+      - ORACLE_SID=XE
+      - ORACLE_PDB=test
+      - ORACLE_PWD=test
     volumes:
       - oracle-data:/opt/oracle/oradata
+      - .data-bridge:/data-bridge # just to have someplace to put data into the running container if needed
+      - ./initscripts:/u01/app/oracle/scripts/startup # please here init scripts
     networks:
       - customernetwork
 
