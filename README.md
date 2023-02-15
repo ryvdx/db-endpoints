@@ -25,7 +25,9 @@ sudo chkconfig docker on
 ```
 
 # Setup
+```
 sudo git clone https://github.com/ryvdx/ryvealedgetest.git /var/lib/db-endpoints
+```
 
 # Edit Portainer password
 Create a new password for portainer using bcrypt, and replace that in /var/lib/db-endpoints/docker-compose.yaml in the portainer command line.  (Just make sure it meets the portainer minimum complexity
