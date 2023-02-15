@@ -10,7 +10,7 @@ services:
 
   healthcheck:
     image: nginx:1.23.3
-    platform: linux/arm64
+    platform: linux/amd64
     volumes:
     - ./index.html:/usr/share/nginx/html/index.html
     environment:
