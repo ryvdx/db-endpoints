@@ -40,7 +40,7 @@ services:
     - customernetwork
 
   oracledb:
-    shm_size: 512mb
+    shm_size: 1g
     image: container-registry.oracle.com/database/express:21.3.0-xe
     container_name: oracledb
     platform: linux/amd64
