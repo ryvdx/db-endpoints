@@ -1,6 +1,8 @@
 # db-endpoints
-Did you just want a simple way to get an instance of Oracle and or SQL Server up and running for development and testing?  Yeah, so did I.
-Getting Oralce and SQL Server up and running on an M1 Mac proved too frustrating, and it seems (at the time I did this), that neither SQL Server and Oracle have "developer-friendly" containers ready for arm64 out of the box.
+Did you just want a simple way to get an instance of Oracle and or SQL Server up and running for development and testing?
+Yeah, so did I.
+
+Getting Oralce and SQL Server up and running on an M1 Mac is frustrating, it seems (at the time I did this), that neither SQL Server and Oracle have "developer-friendly" containers ready for arm64 out of the box.  This was just a simple solution to get some basic database endpoints running on AWS EC2's.
 
 # What's in the box?
 1. MSSQL Express Edition
