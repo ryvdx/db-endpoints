@@ -4,6 +4,7 @@ version: '3.4'
 volumes:
   mssql-data:
   oracle-data:
+  data-bridge:
   portainer-data:
 
 services:
@@ -54,7 +55,7 @@ services:
       - ORACLE_PWD=test
     volumes:
       - oracle-data:/opt/oracle/oradata
-      - .data-bridge:/data-bridge # just to have someplace to put data into the running container if needed
+      - data-bridge:/data-bridge
       - ./initscripts:/u01/app/oracle/scripts/startup # please here init scripts
     networks:
       - customernetwork
