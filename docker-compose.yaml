@@ -9,11 +9,10 @@ volumes:
 services:
 
   healthcheck:
-    image: nginx:1.23.3
+    image: nginx:alpine-slim
+    platform: linux/amd64
     volumes:
     - ./index.html:/usr/share/nginx/html/index.html
-    environment:
-      ENV: development
     ports:
     - 80:80
     networks:
