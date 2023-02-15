@@ -1,0 +1,44 @@
+---
+version: '3.4'
+
+volumes:
+  mssql-data:
+  oracle-data:
+
+services:
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWRD: Passw0rd_
+    volumes:
+     - mssql-data:/var/opt/mssql
+    ports:
+    - 1443:1443
+    networks:
+    - customernetwork
+
+  mssql-tools:
+    image: mcr.microsoft.com/mssql-tools
+    container_name: mssql-tools
+    networks:
+    - customernetwork
+
+  oracledb:
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    container_name: oracledb
+    ports:
+      - 1521:1521
+      - 8080:8080
+      - 5500:5500
+    environment:
+      ORACLE_PWD: value
+      ORACLE_PDB: mypdb
+      ORACLE_SID: XE
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+
+networks:
+    customernetwork:
