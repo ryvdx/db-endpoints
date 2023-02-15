@@ -4,13 +4,13 @@ version: '3.4'
 volumes:
   mssql-data:
   oracle-data:
-  data-bridge:
+  oracle-data-bridge:
   portainer-data:
 
 services:
 
   healthcheck:
-    image: nginx:alpine-slim
+    image: nginx:alpine
     platform: linux/amd64
     volumes:
     - ./index.html:/usr/share/nginx/html/index.html
@@ -25,7 +25,7 @@ services:
     container_name: mssql
     environment:
       ACCEPT_EULA: Y
-      MSSQL_SA_PASSWRD: Passw0rd_
+      MSSQL_SA_PASSWORD: Passw0rd_
     volumes:
      - mssql-data:/var/opt/mssql
     ports:
@@ -33,21 +33,14 @@ services:
     networks:
     - customernetwork
 
-  mssql-tools:
-    image: mcr.microsoft.com/mssql-tools
-    platform: linux/amd64
-    container_name: mssql-tools
-    networks:
-    - customernetwork
-
   oracledb:
-    # shm_size: 1g
     image: container-registry.oracle.com/database/express:21.3.0-xe
+    # image: oraclelinux:9
+    platform: linux/arm64/v8
     container_name: oracledb
-    platform: linux/amd64
     ports:
       - 1521:1521
-      - 8080:8080
+      - 8081:8080
       - 5500:5500
     environment:
       - ORACLE_SID=XE
@@ -55,8 +48,7 @@ services:
       - ORACLE_PWD=test
     volumes:
       - oracle-data:/opt/oracle/oradata
-      - data-bridge:/data-bridge
-      - ./initscripts:/u01/app/oracle/scripts/startup # please here init scripts
+      # - oracle-data-bridge:/data-bridge
     networks:
       - customernetwork
 

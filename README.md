@@ -12,7 +12,7 @@ Getting Oralce and SQL Server up and running on an M1 Mac is frustrating, it see
 
 # AWS recommended setup
 1. Setup security group that 
-2. Create EC2 (AWS Linux type), t2.medium or larger.  (just beyond free tier but still cheap.
+2. Create EC2 (AWS Linux type), t2.large or larger.  (About a cup of coffee/day... just shut it down at the end of the day.)
 3. Run this behind a classic ELB using AWS ACM for SSL.
 4. Setup the ELB healthcheck for HTTP:80/index.html (Will use the hello-world nginx for the health check.)
 
